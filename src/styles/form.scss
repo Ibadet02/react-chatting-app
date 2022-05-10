@@ -1,0 +1,109 @@
+$inputHeight: 1.8rem;
+$labelGap: .1rem;
+$formButtonColor: #3547a1;
+@mixin form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+@mixin input {
+    height: $inputHeight;
+    font-size: 1em;
+    padding-left: .2em;
+    outline: none;
+}
+@mixin button {
+    input[type=submit]{
+        height: $inputHeight;
+        background-color: $formButtonColor;
+        border: none;
+        color: white;
+        font-weight: 600;
+        cursor: pointer;
+        outline: none;
+    }
+    input[type=submit]:active{
+        transform: scale(.97);
+    }
+}
+@mixin inputBlock{
+    display: flex;
+    flex-direction: column;
+    gap: $labelGap;
+}
+@mixin signInUp{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+}
+.form-wrapper{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .form-flex{
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        align-items: center;
+        border: 1px solid black;
+        padding: 1rem;
+        width: 500px;
+        max-height: 100vh;
+        overflow-y: auto;
+    }
+    .form-logo-wrapper{
+        a{
+            text-decoration: none;
+        }
+    }
+    .signin-form{
+        @include signInUp();
+        form{
+            @include form();
+            .signin-email, .signin-password{
+                @include inputBlock();
+                label::after{
+                    content: "*";
+                    color: red;
+                }
+                input{
+                    @include input();
+                }
+            }
+            @include button();
+        }
+    }
+    .signup-form{
+        @include signInUp();
+        form{
+            @include form();
+            .first-second-name{
+                display: flex;
+                justify-content: space-between;
+                .first-name, .second-name{
+                    @include inputBlock();
+                    input{
+                        @include input();
+                    }
+                }
+            }
+            .gender{
+                display: flex;
+                gap: 2rem;
+                .male, .female, .other-gender{
+                    display: flex;
+                    align-items: center;
+                }
+            }
+            .signup-email, .signup-password, .signup-password-again{
+                @include inputBlock();
+                input{
+                    @include input();
+                }
+            }
+            @include button();
+        }
+    }
+}

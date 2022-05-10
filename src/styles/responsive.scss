@@ -1,0 +1,21 @@
+@media (max-width: 505px){
+    .form-flex{
+        width: 100vw !important;
+    }
+}
+@media (max-width: 445px){
+    .first-second-name{
+        flex-direction: column;
+        gap: 2rem;
+    }
+}
+@media (max-width: 330px){
+    .gender{
+        justify-content: space-between;
+    }
+}
+@media (max-width: 255px){
+    .form-flex{
+        padding: .1rem !important;
+    }
+}
