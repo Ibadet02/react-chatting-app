@@ -64,7 +64,7 @@ function FormSignUp() {
           />
         </div>
         <div className="signup-password-again">
-          <label htmlFor="signuppassworda">Password</label>
+          <label htmlFor="signuppassworda">Password again</label>
           <input 
           id="signuppassworda"
           type={"text"}

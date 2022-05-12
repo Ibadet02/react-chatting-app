@@ -95,6 +95,9 @@ $formButtonColor: #3547a1;
                 .male, .female, .other-gender{
                     display: flex;
                     align-items: center;
+                    input{
+                        cursor: pointer
+                    }
                 }
             }
             .signup-email, .signup-password, .signup-password-again{
