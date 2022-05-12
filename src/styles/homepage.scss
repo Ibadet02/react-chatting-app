@@ -1,0 +1,66 @@
+.homepage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    .homepage-flex{
+        display: flex;
+        width: 85rem;
+        height: 40rem;
+        overflow: hidden;
+        // overflow-y: auto;
+        background-color: rgba(100,100,100, .3);
+        border-radius: 2rem;
+        .menu-bar{
+            width: 18rem;
+            background: linear-gradient(to bottom, hsl(251.05,76%,80.39%), #8B85E7 );
+            padding: 1rem 0;
+            .menu-bar-flex{
+                display: flex;
+                flex-direction: column;
+                gap: 3rem;
+                .user-profile{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: .8rem;
+                    div{
+                        width: 6rem;
+                        height: 6rem;
+                        border-radius: 50%;
+                        border: .2rem solid white;
+                        img{
+                            width: 100%;
+                            height: 100%;
+                            border-radius: 50%;
+                        }
+                    }
+                    h2{
+                        color: white;
+                    }
+                }
+                .links{
+                    display: flex;
+                    flex-direction: column;
+                    a{
+                        width: 100%;
+                        display: flex;
+                        align-items: center;
+                        padding: 1.7rem 0 1.7rem .6rem;
+                        gap: .5rem;
+                        text-decoration: none;
+                        color: white;
+                    }
+                    a:hover{
+                        background: linear-gradient( to bottom, rgba(180,142,255,.9), rgba(130,131,224,.9));
+                    }
+                    a.active{
+                        background: linear-gradient( to bottom, rgba(180,142,255,.9), rgba(130,131,224,.9));
+                        border-left: .3rem solid pink;
+                    }
+                }
+            }
+        }
+    }
+}

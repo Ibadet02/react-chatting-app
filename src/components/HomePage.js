@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import '../styles/homepage.scss'
 import Home from './Home'
 import Chat from './Chat'
@@ -8,7 +8,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHouse, faCommentSms, faUsersGear } from '@fortawesome/free-solid-svg-icons'
 import myImg from '../assets/myimg.png'
 function HomePage() {
-  return (
+    const [clickedLink, setClickedLink] = useState(
+        {
+            home: true,
+            chat: false,
+            settings: false
+        })
+    return (
       <Router>
         <div className='homepage'>
             <div className='homepage-flex'>
