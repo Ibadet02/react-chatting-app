@@ -3,6 +3,27 @@ $img-nameGap: .8rem;
 $accImgSize: 4rem;
 $accBorder-radius: 1.3rem;
 $activePerson: rgb(220, 229, 243);
+$typeIconSize: 1.3rem;
+$triangle: 11px;
+$messageColor: #6B1AFF;
+@mixin icons (){
+    position: absolute;
+    // background-color: blue;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+@mixin svg-icons{
+    width: $typeIconSize;
+    height: $typeIconSize;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: .6rem;
+    // background-color: aqua;
+    :hover{
+        background-color: red;
+    }
+}
 .chat{
     background-color: $chatBackground;
     padding: 1rem 2rem;
@@ -87,11 +108,11 @@ $activePerson: rgb(220, 229, 243);
             flex: 1;
             // background-color: aqua;
             .person-account{
-                background-color: aqua;
+                background-color: white;
                 display: flex;
                 gap: $img-nameGap;
                 align-items: center;
-                padding: .5rem 1rem;
+                padding: .7rem 1rem;
                 border-radius: $accBorder-radius;
                 div{
                     width: $accImgSize;
@@ -108,8 +129,92 @@ $activePerson: rgb(220, 229, 243);
             }
             .message-box{
                 flex: 1;
-                background-color: lightblue;
+                background-color: wheat;
                 border-radius: $accBorder-radius;
+                display: flex;
+                flex-direction: column;
+                .messages{
+                    flex: 1;
+                    background-color: red;
+                    border-radius: $accBorder-radius;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 2rem;
+                    .demo-time-message{
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-end;
+                        gap: .6rem;
+                        .demo-message{
+                            display: flex;
+                            justify-content: right;
+                            .my-message{
+                                width: 200px;
+                                height: 2rem;
+                                background-color: $messageColor;
+                                border-top-left-radius: $accBorder-radius;
+                                border-bottom-left-radius: $accBorder-radius;
+                                border-top-right-radius: $accBorder-radius;
+                            }
+                            .triangle{
+
+                                width: $triangle;
+                                border-bottom: $triangle solid $messageColor;
+                                border-right: $triangle solid transparent;
+                            }
+                        }
+                    }
+                }
+                .type-box{
+                    height: 4rem;
+                    border-radius: $accBorder-radius;
+                    label{
+                        // background-color: green;
+                        position: relative;
+                        .type-icons-left{
+                            @include icons();
+                            left: 0;
+                            top: 0;
+                            justify-content: center;
+                            width: $typeIconSize + 2rem;
+                            svg{
+                                @include svg-icons();
+                            }
+                            svg:hover{
+                                background-color: #ccc;
+                            }
+                            svg:active{
+                                background-color: #aaa;
+                            }
+                        }
+                        .type-icons-right{
+                            @include icons();
+                            gap: 1rem;
+                            right: 0;
+                            top: 0;
+                            margin-right: 1rem;
+                            svg{
+                                @include svg-icons();
+                            }
+                            svg:hover{
+                                background-color: #ccc;
+                            }
+                            svg:active{
+                                background-color: #aaa;
+                            }
+                        }
+                        input{
+                            height: 100%;
+                            width: 100%;
+                            border-radius: $accBorder-radius;
+                            font-size: 1.1rem;
+                            border: none;
+                            outline: none;
+                            padding-left: $typeIconSize + 2rem;
+                            padding-right: 11rem;
+                        }
+                    }
+                }
             }
         }
     }
