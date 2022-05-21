@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import '../styles/chat.scss'
+import React, { useState, useEffect } from 'react'
+// import '../styles/chat.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMicrophone, faSmile, faPaperclip, faPaperPlane } from '@fortawesome/free-solid-svg-icons'
 import enver from '../assets/enver.jpeg'
@@ -19,6 +19,12 @@ function Chat() {
   const [personClick, setPersonClick] = useState({
     pName: "",
     pImg: ''
+  })
+  if(window.innerWidth < 680){
+
+  }
+  useEffect(()=>{
+      // window.innerWidth > 300 ? console.log(">") : console.log("<")
   })
   const handleGetMessage = (event) =>{
     setGetMessage(prev=>{

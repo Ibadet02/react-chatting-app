@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import '../styles/homepage.scss'
+// import '../styles/homepage.scss'
 import Home from './Home'
 import Chat from './Chat'
 import Settings from './Settings'
@@ -27,9 +27,9 @@ function HomePage() {
                             <h2>Ibadet Ismayilov</h2>
                         </div>
                         <div className='links'>
-                            <Link to={'/'}><span><FontAwesomeIcon icon={faHouse} /></span>Home</Link>
-                            <Link to={'/chat'}><span><FontAwesomeIcon icon={faCommentSms} /></span>Chat</Link>
-                            <Link to={'/settings'}><span><FontAwesomeIcon icon={faUsersGear} /></span>Settings</Link>
+                            <Link to={'/'}><span><FontAwesomeIcon icon={faHouse} /></span><span>Home</span></Link>
+                            <Link to={'/chat'}><span><FontAwesomeIcon icon={faCommentSms} /></span><span>Chat</span></Link>
+                            <Link to={'/settings'}><span><FontAwesomeIcon icon={faUsersGear} /></span><span>Settings</span></Link>
                         </div>
                     </div>
                 </div>

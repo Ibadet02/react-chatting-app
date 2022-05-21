@@ -46,9 +46,6 @@ $messageColor: #6B1AFF;
                 flex-direction: column;
                 gap: 1rem;
                 padding-right: .2rem;
-                h2{
-
-                }
                 label{
 
                     input{
@@ -63,7 +60,7 @@ $messageColor: #6B1AFF;
                 }
             }
             .fake-accounts{
-                padding-right: .2rem;
+                padding-right: .6rem;
                 overflow-y: scroll;
                 height: 100%;
                 display: flex;
@@ -104,7 +101,7 @@ $messageColor: #6B1AFF;
         .chat-box{
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            // gap: 1rem;
             flex: 1;
             // background-color: aqua;
             .person-account{
@@ -227,7 +224,7 @@ $messageColor: #6B1AFF;
                             border: none;
                             outline: none;
                             padding-left: $typeIconSize + 2rem;
-                            padding-right: 11rem;
+                            padding-right: 8.5rem;
                         }
                     }
                 }

@@ -1,6 +1,6 @@
 import React from 'react'
-import '../styles/form.scss'
-import '../styles/responsive.scss'
+// import '../styles/form.scss'
+// import '../styles/responsive.scss'
 import FormSignIn from './FormSignIn'
 import FormSignUp from './FormSignUp'
 import {BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'

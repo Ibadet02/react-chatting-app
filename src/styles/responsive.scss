@@ -1,3 +1,67 @@
+@media (max-width: 1360px) {
+    .homepage .homepage-flex{
+        height: 100%;
+        border-radius: 0;
+    }
+    .chat .chat-flex .chat-box .message-box .messages{
+        height: 27rem;
+    }
+}
+@media (max-width: 1100px){
+    .homepage .homepage-flex .menu-bar{
+        width: 10rem;
+    }
+}
+@media (max-width: 960px){
+    .chat .chat-flex{
+        gap: 1rem;
+    }
+}
+@media (max-width: 890px){
+    .chat .chat-flex .contacts{
+        width: 15rem;
+    }
+    .chat .chat-flex .contacts .chat-header label input{
+        width: 100%;
+        width: calc(100% - .5rem);
+    }
+    .chat .chat-flex .contacts .fake-accounts{
+        gap: .5rem;
+    }
+    .chat .chat-flex .contacts .fake-accounts .person-link{
+        padding:  .5rem 0;
+    }
+}
+@media (max-width: 810px){
+    .homepage .homepage-flex .menu-bar{
+        width: 2rem;
+    }
+    .homepage .homepage-flex .menu-bar .menu-bar-flex{
+        height: 100%;
+        justify-content: center;
+    }
+    .homepage .homepage-flex .menu-bar .menu-bar-flex .user-profile{
+        display: none;
+    }
+    .homepage .homepage-flex .menu-bar .menu-bar-flex .links a span:last-child{
+        display: none;
+    }
+    .homepage .homepage-flex .menu-bar .menu-bar-flex .links a{
+        justify-content: center;
+        padding: 1.7rem 0;
+    }
+}
+@media (max-width: 680px){
+    .chat .chat-flex .chat-box{
+        display: none;
+    }
+    .chat .chat-flex .contacts{
+        flex: 1;
+    }
+    .chat{
+        padding: 0 0 0 .2rem;
+    }
+}
 @media (max-width: 505px){
     .form-flex{
         width: 100vw !important;
