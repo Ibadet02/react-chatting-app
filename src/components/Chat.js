@@ -11,14 +11,14 @@ const FAKE_ACCOUNTS = {
   names: [["Mustafa", mustafa], ["Oruc", oruc], ["Nusret", nusret], ["Enver Teacher", enver], ["Ferid", nopicture], ["Samir", nopicture], ["Ilham", nopicture], ["Oruc", nopicture], ["Ibadet", nopicture]]
 }
 function Chat() {
-  const [sendMessage, setSendMessage] = useState(Array(FAKE_ACCOUNTS.names.length).fill(['', '']))
+  const [sendMessage, setSendMessage] = useState([[[''], ['']], [[''], ['']],[[''], ['']],[[''], ['']],[[''], ['']],[[''], ['']],[[''], ['']],[[''], ['']],[[''], ['']]])
   const [getMessage, setGetMessage] = useState(Array(FAKE_ACCOUNTS.names.length).fill(''))
   const [showAccounts, setShowAccounts] = useState(-1)
   const [searchPerson, setSearchPerson] = useState('')
   const [activePerson, setActivePerson] = useState(Array(FAKE_ACCOUNTS.names.length).fill(false))
   const [personClick, setPersonClick] = useState({
-    pName: "Name",
-    pImg: nopicture
+    pName: "",
+    pImg: ''
   })
   const handleGetMessage = (event) =>{
     setGetMessage(prev=>{
@@ -30,7 +30,11 @@ function Chat() {
       })
     })
   }
-  const handleSendMessage = (getMessage) =>{
+  const handleSendMessage = (e) =>{
+    e.preventDefault()
+    if((/^\s+$|^$/gi).test(getMessage[showAccounts])){
+      return
+    }
     setGetMessage(prev=>{
       return prev.map((el, i)=>{
         if(i===showAccounts){
@@ -40,12 +44,15 @@ function Chat() {
       })
     })
     setSendMessage(prev=>{
-      return prev.map((el, i)=>{
-        if(i===showAccounts){
-          return [getMessage, new Date()]
-        }
-        return el
-      })
+      var copyPrev = [...prev]
+      if(copyPrev[showAccounts][0][0] == ''){
+        copyPrev[showAccounts][0].shift()
+        copyPrev[showAccounts][1].shift()
+      }
+      const now = new Date()
+      copyPrev[showAccounts][0].push(getMessage[showAccounts])
+      copyPrev[showAccounts][1].push(now.getHours() + ':' + now.getMinutes())
+      return copyPrev
     })
   }
   const handlePersonClick = (personImg, personName, index)=>{
@@ -106,22 +113,27 @@ function Chat() {
             </div>
             <div className='message-box'>
               <div className='messages'>
-                <div className='demo-time-message'>
+              {
+                sendMessage[showAccounts===-1?0:showAccounts][0][0] == '' ? null :
+                sendMessage[showAccounts===-1?0:showAccounts][0].map((el, index)=>{
+                  return <div key={index} className='demo-time-message'>
+                          <div className='demo-message'>
+                            <div className='my-message'>{el}</div>
+                            <div className='triangle'></div>
+                          </div>
+                          <span className='time'>{sendMessage[showAccounts===-1?0:showAccounts][1][index]}</span>
+                        </div>
+                })
+              }
+                {/* <div className='demo-time-message'>
                   <div className='demo-message'>
                     <div className='my-message'>{sendMessage[showAccounts===-1?0:showAccounts][0]}</div>
                     <div className='triangle'></div>
                   </div>
-                  {/* <span className='time'>{sendMessage[showAccounts===-1?0:showAccounts][1]}</span> */}
-                </div>
-                {/* <div className='demo-time-message'>
-                  <div className='demo-message'>
-                    <div className='my-message'></div>
-                    <div className='triangle'></div>
-                  </div>
-                  <span className='time'>12:00 PM</span>
+                  <span className='time'>{sendMessage[showAccounts===-1?0:showAccounts][1]}</span>
                 </div> */}
               </div>
-              <div className='type-box'>
+              <form className='type-box' onSubmit={(e) => handleSendMessage(e)}>
                 <label>
                   <div className='type-icons-left'>
                     <FontAwesomeIcon icon={faMicrophone} />
@@ -135,10 +147,10 @@ function Chat() {
                   <div className='type-icons-right'>
                     <FontAwesomeIcon icon={faSmile} />
                     <FontAwesomeIcon icon={faPaperclip} />
-                    <FontAwesomeIcon icon={faPaperPlane} onClick={() => handleSendMessage(getMessage)} />
+                    <button type='submit'><FontAwesomeIcon icon={faPaperPlane} /></button>
                   </div>
                 </label>
-              </div>
+              </form>
             </div>
         </div> : null}
       </div>
