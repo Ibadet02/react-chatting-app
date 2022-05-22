@@ -3,3 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+.App{
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    background-color: rgba(0,0,255,.1);
+}
