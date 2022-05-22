@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 // import '../styles/chat.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMicrophone, faSmile, faPaperclip, faPaperPlane } from '@fortawesome/free-solid-svg-icons'
+import { faMicrophone, faSmile, faPaperclip, faPaperPlane, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import enver from '../assets/enver.jpeg'
 import mustafa from '../assets/mustafa.jpeg'
 import nusret from '../assets/nusret.jpg'
@@ -20,12 +20,32 @@ function Chat() {
     pName: "",
     pImg: ''
   })
-  if(window.innerWidth < 680){
-
-  }
-  useEffect(()=>{
-      // window.innerWidth > 300 ? console.log(">") : console.log("<")
+  console.log(activePerson)
+  const [{isActive, accountBox, chatBox}, setResponsiveMessageBox] = useState({
+    isActive: window.innerWidth <= 680 ? true : false,
+    accountBox: activePerson.find(el=>el == true) ? false : true,
+    chatBox: activePerson.find(el=>el === true) ? false : true
   })
+  useEffect(()=>{
+    window.addEventListener("resize",()=>{
+      if(window.innerWidth <= 680){
+        setResponsiveMessageBox(prev=>{
+          return {...prev, isActive: true}
+        })
+      }
+      else{
+        setResponsiveMessageBox(prev=>{
+          return {...prev, isActive: false}
+        })
+      }
+    })
+  },[])
+  const backToAccounts = ()=>{
+    setResponsiveMessageBox(prev=>{
+      return {...prev, accountBox: true}
+    })
+    setActivePerson(prev=>Array(FAKE_ACCOUNTS.names.length).fill(false))
+  }
   const handleGetMessage = (event) =>{
     setGetMessage(prev=>{
       return prev.map((el, i)=>{
@@ -62,6 +82,9 @@ function Chat() {
     })
   }
   const handlePersonClick = (personImg, personName, index)=>{
+    setResponsiveMessageBox(prev=>{
+      return {...prev, accountBox: false, chatBox: true}
+    })
       setPersonClick(()=>{
         return {
           pName: personName,
@@ -77,7 +100,7 @@ function Chat() {
   return (
     <div className='chat'>
       <div className='chat-flex'>
-        <div className='contacts'>
+        <div className={`contacts ${(accountBox && isActive) ? 'show' : 'hide'}`}>
           <div className='chat-header'>
             <h2>Chat</h2>
             <label>
@@ -110,11 +133,14 @@ function Chat() {
             })}
           </div>
         </div>
-        {showAccounts !== -1 ? <div className='chat-box'>
+        {showAccounts !== -1 ? <div className={`chat-box ${(accountBox && isActive)? 'hide':'show'}`}>
             <div className='person-account'>
-                <div>
-                  <img src={personClick.pImg} />
-                </div>
+              <div className='left-arrow-div' onClick={()=>backToAccounts()}>
+                <FontAwesomeIcon icon={faArrowLeft} />
+              </div>
+              <div className='img-div'>
+                <img src={personClick.pImg} />
+              </div>
               <h3>{personClick.pName}</h3>
             </div>
             <div className='message-box'>

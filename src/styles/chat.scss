@@ -111,7 +111,10 @@ $messageColor: #6B1AFF;
                 align-items: center;
                 padding: .7rem 1rem;
                 border-radius: $accBorder-radius;
-                div{
+                .left-arrow-div{
+                    display: none;
+                }
+                .img-div{
                     width: $accImgSize;
                     height: $accImgSize;
                     border-radius: 50%;
