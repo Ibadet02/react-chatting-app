@@ -40,6 +40,8 @@ function Chat() {
       }
     })
   },[])
+  console.log('10'+1)
+  console.log('10'-1)
   const backToAccounts = ()=>{
     setResponsiveMessageBox(prev=>{
       return {...prev, accountBox: true}

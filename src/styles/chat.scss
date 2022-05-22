@@ -135,7 +135,8 @@ $messageColor: #6B1AFF;
                 flex-direction: column;
                 .messages{
                     // flex: 1;
-                    height: 28rem;
+                    // height: 28rem;
+                    flex-basis: 90%;
                     background-color: white;
                     border-radius: $accBorder-radius;
                     display: flex;
